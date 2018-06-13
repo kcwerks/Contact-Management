@@ -1,0 +1,113 @@
+<!-- Contacts page CRUD SPA -->
+
+<!doctype html>
+<html>
+<head>
+    <title>Contacts Page</title>
+
+    <!-- Include all dependencies -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/>
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+
+    <script src="./javascripts/contacts.js"></script>
+
+    <script async defer src = "https://maps.googleapis.com/maps/api/js?callback=createMap"></script>
+    <!--                        -->
+</head>
+<body>
+    <header>
+        <p><span id="focus">Web Application Development - Final Project</span></p>
+        <p id ="loggedin"><a href="/logout" id = "logout" >Logout</a></p>
+    </header>
+    <div class="container">
+        
+        <div id="create">
+            <button id = "createButton" class ="btn hvr-sweep-to-bottom" type="button">Create a new contact</button>
+            <button id="search" class ="btn hvr-sweep-to-bottom" type="button">Search names in table</button>
+        </div>
+        
+        <div id = "searchTable">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <% include search %>
+        </div>
+
+        <div id="errors">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+            <!-- Errors added here as li(s) via jquery -->
+            <ul >
+            
+            </ul>
+        </div>
+        
+        <section id="createContact">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <form id = "createForm" class="form-inline">
+                <% include form %>
+                <button type="button" class ="btn hvr-sweep-to-bottom" id = 'save'>save</button>
+            </form>
+        </section>
+
+        <!-- Display the table of contacts with all info provided -->
+        <section id = "contactList">
+            <table id= "contactsTable" class = "table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Street Address</th>
+                        <th>Email Address</th>
+                        <th>Phone Number</th>
+                        <th>Contact Method</th>
+                        <th colspan=2 >Options</th>
+                    </tr>
+                </thead>
+                <tbody id ="tableContents">
+                    <% contacts.forEach(function (user) { %>
+                    <tr data-id = "<%= user._id %>"
+                        data-latitude="<%= user.latitude %>"
+                        data-longitude="<%= user.longitude %>" class='table-hover'>
+                        <td><%= user.suffix%> <%= user.first%> <%= user.last%></td>
+                        <td><%= user.street%>, <%= user.city%>, <%= user.state%>, <%= user.zip%></td>
+                        <td><a href="mailto:<%= user.email%>"><%= user.email%></a></td>
+                        <td><%= user.phone%></td>
+                        <td>
+                            <% if (user.contactByPhone && user.contactByEmail && user.contactByMail) {%>
+                            Any
+                            <% } %>
+                            <% if (user.contactByPhone) {%>
+                            | Phone                            
+                            <% } %>
+                            <% if (user.contactByEmail) {%>
+                            | Email 
+                            <% } %>
+                            <% if (user.contactByMail) {%>
+                            | Mail                             
+                            <% } %>
+                        </td>
+                        <td><button type = "button" class ="btn modify hvr-sweep-to-bottom" name='modifyContact'>Update</button></td>
+                        <td><button type="button" class ="btn delete hvr-sweep-to-bottom" name = 'delete' >Delete</button></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </section>
+        <section id="thankYou">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p>Your information has been successfully updated.</p>
+        </section>
+        <div id="map-canvas">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+ 
+@import url('https://fonts.googleapis.com/css?family=Athiti|Baloo+Thambi');
+@import url('./hover.css');
+
+@buttonColor: #33ccff;
+@headerColor: #33ccff;
+@buttonOnHover: #F3843E;
+@instructionColor: #6E6E6E;
+@textBackground: #33ccff;
+@backgroundColor: #333333;
+@defaultPadding: 1em;
+@warning: #33ccff;
+
+.initBorderRadius() 
+{
+    border-radius: 10px;
+}
+
+body 
+{
+    background-color: @backgroundColor;
+    font-family: 'Baloo Thambi', cursive;
+    font-family: 'Athiti', sans-serif;
+    color: white;
+}
+
+.close
+{
+    color: white;
+    background-color: white;
+    background: white;
+}
+
+#createForm 
+{
+    padding-bottom: 10px;
+}
+
+#map-canvas 
+{
+    width:100%;
+    height:500px;
+    color: black;
+}
+
+div
+{
+    padding: @defaultPadding;
+}
+
+
+header 
+{
+    background-color: @headerColor;
+    padding-top: @defaultPadding ;
+    width: 100%;
+    color: white;
+    p 
+    {
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    
+    #focus 
+    {
+        font-size: 40px;
+    }
+    
+    #loggedin 
+    {
+        font-size: medium;
+        text-align: left;
+        color: @instructionColor;
+        padding:0;
+        padding-left: @defaultPadding;  
+        
+        a 
+        {
+            color: white;
+        }
+    }
+}
+
+a 
+{
+    text-decoration: none;
+    color: @buttonColor;
+}
+
+a:hover, a:active 
+{
+    color: @buttonOnHover;
+}
+
+
+.btn 
+{
+    background: @buttonColor;
+    color: white;   
+}
+
+.table-hover:hover 
+{
+    background-color: @instructionColor;
+}
+
+.container 
+{
+    background-color: @backgroundColor;
+}
+
+
+.form-inline, table 
+{
+    color: white;
+    
+    #state 
+    {
+        color: @instructionColor;
+    }
+}
+
+#errors 
+{
+    background-color: @warning;
+    .initBorderRadius();
+}
+#thankYou p 
+{
+    .initBorderRadius();
+    padding: 1.0em;
+    color: @instructionColor;
+    border-spacing: 10px;
+    background-color: @textBackground;
+}
+
+#login 
+{
+    text-align: center;
+    background-color: lighten(@textBackground,20%);
+    margin-top: @defaultPadding;
+    color: darken(@instructionColor,30%);
+    .initBorderRadius();
+}
+
+#logout 
+{
+    text-align: right;
+}

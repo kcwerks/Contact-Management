@@ -1,0 +1,20 @@
+<!-- Login form used throughout app -->
+
+<div id="login" name="login">
+    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4>Please log in to access contacts stored within the database:</h4>
+    
+    <form action = "/login" method="post">
+        <div class="form-group">
+            <label for="username">Username:
+                <input type = "text" class ="form-control" name = "username" id = "username" value=""/>
+            </label>
+        </div>
+        <div class = "form-group">
+            <label for = "password">Password: 
+                <input type="password" class = "form-control" name = "password" id = "password" value =""/>
+            </label>
+        </div>
+        <button type="submit" class="btn hvr-sweep-to-bottom" id ="loginSubmit">LOG IN</button>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+<!-- Thank you page for submitting the form on mailer -->
+
+<!doctype html>
+<html>
+<head>
+    <title>This is a form entry</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Included theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="./javascripts/mailer.js"></script>
+    
+</head>
+<body>
+    <header>
+        <p><span id="focus">Web Application Development - Final Project </span></p>
+    </header>
+    
+    <div class ="container">
+        <a class="btn hvr-sweep-to-bottom" role = "button">Please sign in to access all contacts!</a> 
+        <% include login %>    
+
+        <section id="thankYou">
+            <p>Your information has been successfully added to the database.</p>
+        </section>
+        <div id ="information">
+            <p>Provided Name: <%= contact.suffix%> <%= contact.first%> <%= 
+            contact.last%></p>
+            <p>Provided Address: <%= contact.street%>, <%= contact.city%>, <%= contact.state%>, <%= contact.zip%></p>
+        </div>
+
+    </div>
+</body>
+</html>
